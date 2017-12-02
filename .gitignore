@@ -1,0 +1,9 @@
+##############################################################################
+GenSci Git Ignore - ignoring those files we do not need.
+##############################################################################
+
+# Python compiled code
+*.egg-info
+*.pyc
+__pychache__
+migrations/
