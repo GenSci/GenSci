@@ -1,27 +1,158 @@
 {% extends "base.html" %}
+{% load static %}
+{% block more_style %}
+<style media="screen">
+html,
+body,
+header,
+#intro {
+height: 100%;
+}
+
+#intro {
+background: url("{% static 'images/beach.jpg' %}")no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+/* Adding some padding to offset the top of the window from the navbar */
+.nav-pad {
+    padding-top: 3.5em;
+}
+</style>
+{% endblock %}
 
 {% block content %}
 
-<!--Card-->
-<div class="card m-5" style="width: 22rem;">
+<header>
+    <!--Navbar-->
+   <nav class="navbar navbar-expand-sm navbar-dark black fixed-top">
+       <div class="container">
 
-<!--Card image-->
-<div class="view overlay hm-white-slight">
-<img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" class="img-fluid" alt="">
-<a href="#">
-  <div class="mask"></div>
-</a>
-</div>
+           <!-- Navbar brand -->
+           <a class="navbar-brand" href="#">GenSci</a>
 
-<!--Card content-->
-<div class="card-body">
-<!--Title-->
-<h4 class="card-title">Card title</h4>
-<!--Text-->
-<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-<a href="#" class="btn btn-primary">Button</a>
-</div>
+           <!-- Collapse button -->
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+               aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-</div>
-<!--/.Card-->
+           <!-- Collapsible content -->
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+               <!-- Links -->
+               <ul class="navbar-nav mr-auto">
+                   <li class="nav-item active">
+                       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#purpose">Purpose</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#goals">Goals</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#methods">Methods</a>
+                   </li>
+                   <!-- Dropdown -->
+                   <li class="nav-item dropdown">
+                       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Participate</a>
+                       <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                           <a class="dropdown-item" href="#particpate">Get Notified</a>
+
+                       </div>
+                   </li>
+               </ul>
+       </div>
+   </nav>
+   <!--/.Navbar-->
+
+    <!--Landing Image w/ Mask-->
+    <div  id="intro" class="view hm-black-light">
+
+        <div class="container-fluid full-bg-img d-flex align-items-center justify-content-center">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10 text-center">
+                    <!-- Heading -->
+                    <h1 class="display-3 font-bold white-text mb-2">Coming Soon! Gentlemen Scientists.</h1>
+
+                    <!-- Divider -->
+                    <hr class="hr-light">
+
+                    <!-- Description -->
+                    <h4 class="white-text my-4">Gentlemen Scientists aims to be a place of scientific collaboration and dissemination with a focus on marine science.  We seek to share tools and data as well as methods and results.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.Mask-->
+</header>
+ <main class="mt-5">
+     <div class="container">
+         <!-- Purpose -->
+         <section id="purpose" class="text-left nav-pad">
+             <h1 class="mb-4">Purpose</h1>
+
+             <div class="row d-flex justify-content-left mb-4">
+                 <div class="col-md-10">
+                     <p >
+                         The purpose of Gentlemen Scientists is to disseminate scientific discoveries and ongoing research in marine and coastal sciences to the wider community.  Additionally it seeks to facilitate collaboration and communication between scientists utilizing some of the tools and methodologies from the world of software development.
+                     </p>
+                 </div>
+             </div>
+         </section>
+         <!-- /Purpose -->
+         <hr class="my-5">
+         <!-- Goals -->
+         <section id='goals' class="text-left nav-pad">
+             <h1 class="mb-4">Goals</h1>
+             <div class="row d-flex justify-content-left mb-4 ">
+                 <div class="col-md-10">
+                    <p>
+                         The goals of Gentlmen Scientsts are many and growing as needs or new use cases are identified.  Some identified goals are as follows:
+                    </p>
+                        <ul>
+                            <li>A blog in which scientific discoveries can be documented and research can be shared.</li>
+                            <li>A  set of code repositories to share any custom solutions developed to aid in research endeavors.</li>
+                            <li>An application interface that allows registered scientists to store data in a geographic context and view publicly available data that may interact with their doman.</li>
+                            <li>A community discussion forum where scientists and the greater public can actively communicate about past, ongoing, and future research.</li>
+                        </ul>
+                 </div>
+             </div>
+         </section>
+         <!-- /Goals-->
+         <hr class="my-5">
+         <!-- Methods -->
+         <section id='methods' class = "text-left nav-pad">
+             <h1 class="mb-4">Methods</h1>
+             <div class="row d-flex justify-content-left mb-4">
+                 <div class="col-md-10">
+                     <p>Gentlemen Scientists is intended as a marriage between web application development and oceanographic study of remote sensing data.  The site is developed using a Python 3 framework (Django) and thus much of the initial code base will likely be using that language.</p>
+                     <p>Where possible, graphics will be interactive and directly interpret actual data, which will be available for download.</p>
+                 </div>
+
+             </div>
+         </section>
+         <!-- /Methods -->
+         <hr class="my-5">
+         <!-- Partipcate -->
+         <section id='particpate' class="text-left">
+             <h1 class="mb-4">Participate</h1>
+             <div class="row d-flex justify-content-left mb-4">
+               <div class="col-md-10">
+                  <p>
+                      All those with sincere interest in this endeavor are welcome to participate.
+                  </p>
+
+               </div>
+             </div>
+
+         </section>
+         <!-- /Participate -->
+     </div>
+ </main>
+
+<footer>
+
+</footer>
 {% endblock %}

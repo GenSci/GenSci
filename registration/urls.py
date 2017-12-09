@@ -8,7 +8,7 @@ from registration import views as reg_views
 
 app_name = 'registration'
 urlpatterns = [
-    url(r'^register/$', reg_views.RegisterView.as_view(), name='register'),
+    url(r'^$', reg_views.RegisterView.as_view(), name='register'),
     url(r'^register/complete/$', reg_views.ThankYouView.as_view(), \
         name='reg-complete'),
 ]
