@@ -25,7 +25,7 @@ SECRET_KEY = '%w(!mrx(1!r*a2l5_u_k2w^0@ih7sqw)&wnjff#m+3zw$yb*&('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -122,8 +122,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS =[
     '/home/ryan/Documents/WebDev/static/' ,
-    '/home/ryan/Documents/WebDev/projects/GenSci/GenSci/static/',
-
+    '/home/ryan/Documents/WebDev/projects/GenSci/web/GenSci/static/',
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")

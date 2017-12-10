@@ -9,6 +9,11 @@ header,
 height: 100%;
 }
 
+/*  necessary for scrollspy */
+body  {
+    position: relative;
+}
+
 #intro {
 background: url("{% static 'images/beach.jpg' %}")no-repeat center center fixed;
 -webkit-background-size: cover;
@@ -27,7 +32,7 @@ background-size: cover;
 
 <header>
     <!--Navbar-->
-   <nav class="navbar navbar-expand-sm navbar-dark black fixed-top">
+   <nav id = "gensci_nav" class="navbar navbar-expand-sm navbar-dark black fixed-top">
        <div class="container">
 
            <!-- Navbar brand -->
@@ -42,8 +47,8 @@ background-size: cover;
 
                <!-- Links -->
                <ul class="navbar-nav mr-auto">
-                   <li class="nav-item active">
-                       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
                    </li>
                    <li class="nav-item">
                        <a class="nav-link" href="#purpose">Purpose</a>
@@ -54,13 +59,10 @@ background-size: cover;
                    <li class="nav-item">
                        <a class="nav-link" href="#methods">Methods</a>
                    </li>
-                   <!-- Dropdown -->
-                   <li class="nav-item dropdown">
-                       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Participate</a>
-                       <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                           <a class="dropdown-item" href="#particpate">Get Notified</a>
-
-                       </div>
+               </ul>
+               <ul class="navbar-nav ml-auto">
+                   <li class="nav-item">
+                       <a class="nav-link" href="#">Get Notified - Go Live</a>
                    </li>
                </ul>
        </div>
@@ -87,8 +89,33 @@ background-size: cover;
     </div>
     <!--/.Mask-->
 </header>
- <main class="mt-5">
+ <main class="mt-5" data-spy="scroll" data-target="#gensci_nav" data-offset="0">
      <div class="container">
+         <!-- Definition -->
+         <section id="Definition" class ="text-center nav-pad">
+             <h1 class="mb-2">What is a Gentleman Scientist?</h1>
+             <div class="row d-flex justify-content-center mb-2">
+                 <div class="col-md-10">
+                     <blockquote class="blockquote-reverse" cite="https://en.wikipedia.org/wiki/Independent_scientist">
+                         <p>
+                         An independent scientist (historically also known as <strong>gentleman scientist</strong>) is a financially independent scientist who pursues scientific study without direct affiliation to a public institution such as a university or government-run research and development body. The expression "gentleman scientist" arose in post-Renaissance Europe but became less common in the 20th century as government and private funding increased.
+                         </p>
+                         <p>
+                         Most independent scientists have at some point in their career been affiliated with some academic institution, such as Charles Darwin who was affiliated with the Geological Society of London.
+                         </p>
+                         <footer class="blockquote-footer">
+                             <cite title="Wikipedia">
+                                     <a href="https://en.wikipedia.org/wiki/Independent_scientist">
+                                         Wikipedia
+                                     </a>
+                             </cite>
+                         </footer>
+                     </blockquote>
+                 </div>
+             </div>
+         </section>
+         <!-- /Definition -->
+         <hr class="my-5">
          <!-- Purpose -->
          <section id="purpose" class="text-left nav-pad">
              <h1 class="mb-4">Purpose</h1>
@@ -114,7 +141,8 @@ background-size: cover;
                         <ul>
                             <li>A blog in which scientific discoveries can be documented and research can be shared.</li>
                             <li>A  set of code repositories to share any custom solutions developed to aid in research endeavors.</li>
-                            <li>An application interface that allows registered scientists to store data in a geographic context and view publicly available data that may interact with their doman.</li>
+                            <li>A collaboration interface to allow groups of researchers to discuss their work, share analyes, and draft public releases of research.</li>
+                            <li>An application interface that allows registered scientists to store data in a geographic context and view publicly available data that may interact with their study domain.</li>
                             <li>A community discussion forum where scientists and the greater public can actively communicate about past, ongoing, and future research.</li>
                         </ul>
                  </div>
@@ -129,8 +157,8 @@ background-size: cover;
                  <div class="col-md-10">
                      <p>Gentlemen Scientists is intended as a marriage between web application development and oceanographic study of remote sensing data.  The site is developed using a Python 3 framework (Django) and thus much of the initial code base will likely be using that language.</p>
                      <p>Where possible, graphics will be interactive and directly interpret actual data, which will be available for download.</p>
+                     <p>The D3 visualization framework will be employed as well as some Python based graphing libraries.</p>
                  </div>
-
              </div>
          </section>
          <!-- /Methods -->
@@ -144,7 +172,7 @@ background-size: cover;
                       All those with sincere interest in this endeavor are welcome to participate.  Once the site goes live there will be opportunites to discuss the research posted as well as contribute to the code base.
                   </p>
                   <p>
-                      Those interested parties with additional web development and/or database experience are welcome to contribute to this work.  The code for this site is freely available at https://github.com/supermanzer/GenSci
+                      Those interested parties with web development and/or database experience are welcome to contribute to this work.  The code for this site is freely available <a href="https://github.com/supermanzer/GenSci"> here</a>
                   </p>
 
                </div>

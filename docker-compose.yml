@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+    web:
+        restart: always
+        build: ./web/
+        expose:
+            - "8000"
+        volumes:
+            - ./web:/src
+        command: gunicorn GenSci.wsgi:application -w 2 -b :8000
+
+    nginx:
+        restart: always
+        image: nginx:latest
+        ports:
+            - "8123:80"
+        volumes:
+            - ./web/GenSci/static:/var/www/static
+            - ./config/nginx:/etc/nginx/conf.d
+        depends_on:
+            - web
