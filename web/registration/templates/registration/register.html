@@ -62,7 +62,7 @@ background-size: cover;
                </ul>
                <ul class="navbar-nav ml-auto">
                    <li class="nav-item">
-                       <a class="nav-link" href="#">Get Notified - Go Live</a>
+                       <a class="nav-link" href="{% url 'registration:reg-form' %}">Get Notified - Go Live</a>
                    </li>
                </ul>
        </div>
@@ -172,8 +172,12 @@ background-size: cover;
                       All those with sincere interest in this endeavor are welcome to participate.  Once the site goes live there will be opportunites to discuss the research posted as well as contribute to the code base.
                   </p>
                   <p>
-                      Those interested parties with web development and/or database experience are welcome to contribute to this work.  The code for this site is freely available <a href="https://github.com/supermanzer/GenSci"> here</a>
+                      Those interested parties with web development and/or database experience are welcome to contribute to this work.  The code for this site is freely available <a href="https://github.com/supermanzer/GenSci"> here <i class="fat fa-github" aria-hidden="true"></i></a>
                   </p>
+                  <p>To get notified when this site goes live click here</p>
+                  <div class="row d-flex justify-content-center mb-4">
+                      <a class="btn btn-lg indigo accent-3" href="{% url 'registration:reg-form' %}">Get Notified</a>
+                  </div>
 
                </div>
              </div>

@@ -4,6 +4,28 @@
 <!-- Additional Styling Elements -->
 {% block more_style %}
     <!-- Add More Style Here -->
+    <style media="screen">
+    html,
+    body,
+    header,
+    #intro {
+        height: 100%;
+    }
+
+
+
+    #intro {
+        background: url("{% static 'images/rocky_coast.jpg' %}")no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    /* Adding some padding to offset the top of the window from the navbar */
+    .nav-pad {
+        padding-top: 3.5em;
+    }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -26,44 +48,58 @@
 
                <!-- Links -->
                <ul class="navbar-nav mr-auto">
-                   <li class="nav-item active">
+                   <li class="nav-item">
                        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
                    </li>
                </ul>
+           </div>
        </div>
     </nav>
     <!-- /Navbar -->
     <!-- Mask for page -->
     <div  id="intro" class="view hm-black-light">
+
         <div class="container-fluid full-bg-img d-flex align-items-center justify-content-center">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-10 text-center">
-                    <h3>Sign Up for Go Live Notification</h3>
-                    <hr class="my-5">
-                    <p>If you want to be notified when Gentlemen Scientists goes live with the initial deployment, feel free to sign up below. </p>
+            <div class="row d-flex justify-content-center ">
+                <div class="col-md-6 text-center">
+                    <!-- Registration Form  Cascading Card -->
                     <div class="card">
-                        <form class="" action="" method="post">
-                            {% csrf_token %}
-                            <p class="h5 text-center mb-4">{{form.title}}</p>
-                            <div class="md-form">
-                                <i class="fa fa-user prefix grey-text"></i>
-                                {{form.name}}
-                                <label for="#id_name">Your name</label>
-                            </div>
-                            <div class="md-form">
-                                <i class="fa fa-envelope prefix grey-text"></i>
-                                {{form.email}}
-                                <label for="#id_email">Your email</label>
-                            </div>
-                            <div class="text-center">
-                                <button  type="submit" class="btn btn-deep-blue">Register</button>
-                            </div>
-                        </form>
+
+                        <!-- Card Image -->
+                        <div class="view rgba-blue-light">
+                            <h3  class="h3-responsive">Sign Up for Go Live Notification</h3>
+                            <p>If you want to be notified when Gentlemen Scientists goes live with the initial deployment, feel free to sign up below. </p>
+                        </div>
+                    <!-- /Card Image -->
+
+                    <!-- Card Content -->
+                        <div class="card-body text-center">
+                            <form class="" action="" method="post">
+                                {% csrf_token %}
+                                <p class="h5 text-center mb-4">{{form.title}}</p>
+                                <div class="md-form">
+                                    <i class="fa fa-user prefix grey-text"></i>
+                                    {{form.name}}
+                                    <label for="#id_name">Your name</label>
+                                </div>
+                                <div class="md-form">
+                                    <i class="fa fa-envelope prefix grey-text"></i>
+                                    {{form.email}}
+                                    <label for="#id_email">Your email</label>
+                                </div>
+                                <div class="text-center">
+                                    <button  type="submit" class="btn btn-deep-blue">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /Card Content -->
                     </div>
+                    <!-- /Card -->
                 </div>
             </div>
         </div>
     </div>
+    <!-- /Mask -->
 </header>
 
 <main>
