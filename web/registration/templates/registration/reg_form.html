@@ -40,19 +40,20 @@
                 <div class="col-md-10 text-center">
                     <h3>Sign Up for Go Live Notification</h3>
                     <hr class="my-5">
-                    <p>If you want to be notified when Gentlemen Scientists goes live with the initial development, feel free to sign up below. </p>
+                    <p>If you want to be notified when Gentlemen Scientists goes live with the initial deployment, feel free to sign up below. </p>
                     <div class="card">
                         <form class="" action="" method="post">
-                            <p class="h5 text-center mb-4">Get Notified</p>
+                            {% csrf_token %}
+                            <p class="h5 text-center mb-4">{{form.title}}</p>
                             <div class="md-form">
                                 <i class="fa fa-user prefix grey-text"></i>
-                                <input type="text" id="reg_name" name="name"  class="form-control" value="">
-                                <label for="#reg_name">Your name</label>
+                                {{form.name}}
+                                <label for="#id_name">Your name</label>
                             </div>
                             <div class="md-form">
                                 <i class="fa fa-envelope prefix grey-text"></i>
-                                <input type="email" id="reg_email" name="email" class="form-control" value="">
-                                <label for="#reg_email">Your email</label>
+                                {{form.email}}
+                                <label for="#id_email">Your email</label>
                             </div>
                             <div class="text-center">
                                 <button  type="submit" class="btn btn-deep-blue">Register</button>
@@ -66,7 +67,6 @@
 </header>
 
 <main>
-
 </main>
 
 <footer>

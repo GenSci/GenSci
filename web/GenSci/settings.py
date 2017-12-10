@@ -121,8 +121,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS =[
-    '/home/ryan/Documents/WebDev/static/' ,
-    '/home/ryan/Documents/WebDev/projects/GenSci/web/GenSci/static/',
+    os.path.join(BASE_DIR, 'GenSci/static/'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
