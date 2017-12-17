@@ -5,10 +5,10 @@ services:
         restart: always
         build: ./web/
         expose:
-            - "8123"
+            - "8000"
         volumes:
             - ./web:/src
-        command: "True"
+        command: gunicorn GenSci.wsgi:application -w 2 -b :8000
 
     nginx:
         restart: always
