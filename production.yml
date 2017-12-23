@@ -33,7 +33,7 @@ nginx:
     links:
         - web:web
     ports:
-        - "8999:80"
+        - "80:80"
 
 # # Defining our database server container.
 # postgres:
