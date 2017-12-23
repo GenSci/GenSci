@@ -12,7 +12,9 @@
         height: 100%;
     }
 
-
+  .card {
+      background-color: rgba(255, 255, 255, 0.5);
+  }
 
     #intro {
         background: url("{% static 'images/rocky_coast.jpg' %}")no-repeat center center fixed;
@@ -68,6 +70,7 @@
                         <!-- Card Image -->
                         <div class="view rgba-blue-light">
                             <h3  class="h3-responsive">Sign Up for Go Live Notification</h3>
+                            <hr>
                             <p>If you want to be notified when Gentlemen Scientists goes live with the initial deployment, feel free to sign up below. </p>
                         </div>
                     <!-- /Card Image -->
@@ -78,17 +81,17 @@
                                 {% csrf_token %}
                                 <p class="h5 text-center mb-4">{{form.title}}</p>
                                 <div class="md-form">
-                                    <i class="fa fa-user prefix grey-text"></i>
+                                    <i class="fa fa-user prefix blue-text"></i>
                                     {{form.name}}
-                                    <label for="#id_name">Your name</label>
+                                    <label for="#id_name blue-text">Your name</label>
                                 </div>
                                 <div class="md-form">
-                                    <i class="fa fa-envelope prefix grey-text"></i>
+                                    <i class="fa fa-envelope prefix blue-text"></i>
                                     {{form.email}}
                                     <label for="#id_email">Your email</label>
                                 </div>
                                 <div class="text-center">
-                                    <button  type="submit" class="btn btn-deep-blue">Register</button>
+                                    <button  type="submit" class="btn btn-primary">Register</button>
                                 </div>
                             </form>
                         </div>

@@ -32,7 +32,7 @@ background-size: cover;
 
 <header>
     <!--Navbar-->
-   <nav id = "gensci_nav" class="navbar navbar-expand-sm navbar-dark black fixed-top">
+   <nav id = "gensci_nav" class="navbar navbar-expand-lg navbar-dark black fixed-top">
        <div class="container">
 
            <!-- Navbar brand -->
@@ -51,7 +51,7 @@ background-size: cover;
                        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link" href="#purpose">Purpose</a>
+                       <a class="nav-link"  href="#purpose">Purpose</a>
                    </li>
                    <li class="nav-item">
                        <a class="nav-link" href="#goals">Goals</a>
@@ -59,10 +59,16 @@ background-size: cover;
                    <li class="nav-item">
                        <a class="nav-link" href="#methods">Methods</a>
                    </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#next-steps">Next Steps</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#participate">Participate</a>
+                   </li>
                </ul>
                <ul class="navbar-nav ml-auto">
                    <li class="nav-item">
-                       <a class="nav-link" href="{% url 'registration:reg-form' %}">Get Notified - Go Live</a>
+                       <a class="nav-link" href="{% url 'registration:reg-form' %}">Get Notified</a>
                    </li>
                </ul>
        </div>
@@ -111,7 +117,7 @@ background-size: cover;
                              </cite>
                          </footer>
                      </blockquote>
-                     <p>* The term Gentlemen Scientist is used to evoke a romantic, old-fashioned notion of an independent scientist such as Charles Darwin or Alexandre Von Humboldt.  Here at GenSci we welcome scientists and collaborators of all genders.</p>
+                     <p>* The term Gentlemen Scientist is used to evoke a romantic, old-fashioned notion of an independent scientist such as Charles Darwin or Nikola Tesla.  It is not intended to suggest that only male scientists can participate.  Here at GenSci we welcome scientists and collaborators of all genders.</p>
                  </div>
              </div>
          </section>
@@ -164,6 +170,23 @@ background-size: cover;
          </section>
          <!-- /Methods -->
          <hr class="my-5">
+         <!-- Next Steps -->
+         <section id='next-steps' class = "text-left nav-pad">
+             <h1 class="mb-4">Next Steps</h1>
+             <div class="row d-flex justify-content-left mb-4">
+                 <div class="col-md-10">
+                     <p>FIrst project: <strong>Physical Factors Influencing Phytoplankto Abundance In Southern Monterey Bay</strong></p>
+                     <p>
+                         The likely first project to be developed on GenSci will simply be the master thesis of C. Ryan Manzer, the founder of GenSci.  The intent is to present the scientific research, develop interactive visualizations, share analytical code (in both MatLab and Python), and link to data sources.
+                     </p>
+                     <p>
+                         This research can provide a jumping off point for future collaborative work.
+                     </p>
+                 </div>
+             </div>
+         </section>
+         <!-- /Next Steps -->
+         <hr class="my-5">
          <!-- Partipcate -->
          <section id='particpate' class="text-left">
              <h1 class="mb-4">Participate</h1>
@@ -173,7 +196,7 @@ background-size: cover;
                       All those with sincere interest in this endeavor are welcome to participate.  Once the site goes live there will be opportunites to discuss the research posted as well as contribute to the code base.
                   </p>
                   <p>
-                      Those interested parties with web development and/or database experience are welcome to contribute to this work.  The code for this site is freely available <a href="https://github.com/supermanzer/GenSci"> here <i class="fat fa-github" aria-hidden="true"></i></a>
+                      Those interested parties with web development and/or database experience are welcome to contribute to this work.  The code for this site is freely available <a href="https://github.com/supermanzer/GenSci"> here <i class="fa fa-github" aria-hidden="true"></i></a>
                   </p>
                   <p>To get notified when this site goes live click here</p>
                   <div class="row d-flex justify-content-center mb-4">

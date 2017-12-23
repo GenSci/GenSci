@@ -9,14 +9,12 @@ from registration.models import UserReg
 from registration.forms import RegistrationForm
 
 
-class RegisterView(generic.CreateView):
+class IndexView(generic.TemplateView):
     """
-    How we will handle  registration requests.
+    Here we present the basic landing page describing GenSci.
     """
-    model = UserReg
-    success_url = 'registration:reg-complete'
-    template_name = 'registration/register.html'
-    fields = ['name', 'email']
+    template_name = 'registration/index.html'
+
 
 class ThankYouView(generic.TemplateView):
     """
@@ -25,7 +23,7 @@ class ThankYouView(generic.TemplateView):
     template_name = 'registration/thankyou.html'
 
 
-class RegisterFormView(generic.FormView):
+class RegisterFormView(generic.CreateView ):
     """
     This CBV hanldes presenting the user with a registration form
     and processes the returned form
