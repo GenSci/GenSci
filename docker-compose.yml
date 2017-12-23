@@ -7,16 +7,18 @@ services:
         expose:
             - "8123"
         volumes:
-            - ./web:/src
-        command: "True"
+            - ./web:/code
+        command:  python3 manage.py runserver 0.0.0.0:8000
+        ports:
+            - "8000:8000"
 
     nginx:
         restart: always
-        image: nginx:latest
+        build: ./nginx/
         ports:
-            - "8123:80"
+            - "8765:80"
         volumes:
             - ./web/GenSci/static:/var/www/static
-            - ./config/nginx:/etc/nginx/conf.d
+            - ./config/gensci.conf:/etc/nginx/conf.d
         depends_on:
             - web

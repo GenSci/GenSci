@@ -18,11 +18,12 @@ class RegisterView(generic.CreateView):
     template_name = 'registration/register.html'
     fields = ['name', 'email']
 
-class ThankYouView(generic.View):
+class ThankYouView(generic.TemplateView):
     """
     A simple view to display a thank you message upon registration completion.
     """
     template_name = 'registration/thankyou.html'
+
 
 class RegisterFormView(generic.FormView):
     """
