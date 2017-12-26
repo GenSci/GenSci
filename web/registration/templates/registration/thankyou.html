@@ -1,3 +1,100 @@
 {% extends "base.html" %}
 
 <!-- TODO: Build out general thank you page -->
+{% load static %}
+
+<!-- Additional Styling Elements -->
+{% block more_style %}
+    <!-- Add More Style Here -->
+    <style media="screen">
+    html,
+    body,
+    header,
+    #intro {
+        height: 100%;
+    }
+
+  .card {
+      background-color: rgba(255, 255, 255, 0.75);
+  }
+
+    #intro {
+        background: url("{% static 'images/ocean_arches.jpg' %}")no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    /* Adding some padding to offset the top of the window from the navbar */
+    .nav-pad {
+        padding-top: 3.5em;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+
+<header>
+    <!--Navbar-->
+    <nav id = "gensci_nav" class="navbar navbar-expand-sm navbar-dark black fixed-top">
+       <div class="container">
+
+           <!-- Navbar brand -->
+           <a class="navbar-brand" href="/">GenSci</a>
+
+           <!-- Collapse button -->
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+               aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+           <!-- Collapsible content -->
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+               <!-- Links -->
+               <ul class="navbar-nav mr-auto">
+                   <li class="nav-item">
+                       <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                   </li>
+               </ul>
+           </div>
+       </div>
+    </nav>
+    <!-- /Navbar -->
+    <!-- Mask for page -->
+    <div  id="intro" class="view hm-black-light">
+
+        <div class="container-fluid full-bg-img d-flex align-items-center justify-content-center">
+            <div class="row d-flex justify-content-center ">
+                <div class="col-md-6 text-center">
+                    <!-- Registration Form  Cascading Card -->
+                    <div class="card">
+
+                        <!-- Card Image -->
+                        <div class="view indigo lighten-2">
+                            <h3  class="h3-responsive"><strong>Thanks For Registering!</strong></h3>
+                            <hr>
+                        </div>
+                    <!-- /Card Image -->
+
+                    <!-- Card Content -->
+                        <div class="card-body text-center">
+                            <h5>You will receive a notification email when Gentlemen Scientists launches.  If you want to help with development of the website or simply get an idea of our code base, feel free to check it out <a href="https://github.com/supermanzer/GenSci"> <i class="fa fa-github"></i> here</a></h5>
+                        </div>
+                        <!-- /Card Content -->
+                    </div>
+                    <!-- /Card -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Mask -->
+</header>
+
+<main>
+</main>
+
+<footer>
+
+</footer>
+
+{% endblock %}

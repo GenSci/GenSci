@@ -5,3 +5,4 @@
 # We are keeping this light until we go full bore into the web application.
 django==1.11.8
 gunicorn==19.7.1
+selenium==3.8.0

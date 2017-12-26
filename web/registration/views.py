@@ -15,12 +15,27 @@ class IndexView(generic.TemplateView):
     """
     template_name = 'registration/index.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(IndexView,self).get_context_data(**kwargs)
+        context['title'] = 'GenSci Coming Soon'
+
+        return context
+
 
 class ThankYouView(generic.TemplateView):
     """
     A simple view to display a thank you message upon registration completion.
     """
     template_name = 'registration/thankyou.html'
+
+    def get_context_data(self, **kwargs):
+       """
+       This function appends additional data to the context variable passed to
+       the template.
+       """
+       context = super(ThankYouView,self).get_context_data(**kwargs)
+       context['title'] = "Thank You"
+       return context
 
 
 class RegisterFormView(generic.CreateView ):
@@ -31,3 +46,7 @@ class RegisterFormView(generic.CreateView ):
     template_name = 'registration/reg_form.html'
     form_class = RegistrationForm
     success_url = '/register/complete/'
+
+    def get_context_data(self,**kwargs):
+      context = super(RegisterFormView,self).get_context_data(**kwargs)
+      context['title'] = 'Register'
