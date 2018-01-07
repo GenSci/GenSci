@@ -10,9 +10,6 @@ class UserReg(models.Model):
     """
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True, null=True, blank=True)
-    name = models.CharField(max_length=100, null=True, blank=True, \
-    help_text= \
-    'The person that will be notified when Gentlemen Scientists goes live.')
-    email = models.EmailField(max_length=254, \
-    help_text= \
-    'The email address that will be notified when Gentlmen Scientists goes live.')
+    name = models.CharField(max_length=100, null=True, blank=True,
+        help_text= 'The person that will be notified when Gentlemen Scientists goes live.')
+    email = models.EmailField(max_length=254, help_text='The email address that will be notified when Gentlmen Scientists goes live.')

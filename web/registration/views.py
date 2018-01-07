@@ -50,3 +50,4 @@ class RegisterFormView(generic.CreateView ):
     def get_context_data(self,**kwargs):
       context = super(RegisterFormView,self).get_context_data(**kwargs)
       context['title'] = 'Register'
+      return context

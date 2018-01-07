@@ -69,33 +69,33 @@
 
                         <!-- Card Image -->
                         <div class="view rgba-blue-light">
-                            <h3  class="h3-responsive">Sign Up for Go Live Notification</h3>
+                            <h3  class="h3-responsive">Subscribe for Notifications</h3>
                             <hr>
-                            <p>If you want to be notified when Gentlemen Scientists goes live with the initial deployment, feel free to sign up below. </p>
+                            <p>If you would like to receive notifications about GenSci updates, please subscribe below. </p>
                         </div>
                     <!-- /Card Image -->
 
-                    <!-- Card Content -->
-                        <div class="card-body text-center">
-                            <form class="" action="" method="post">
-                                {% csrf_token %}
-                                <p class="h5 text-center mb-4">{{form.title}}</p>
-                                <div class="md-form">
-                                    <i class="fa fa-user prefix blue-text"></i>
-                                    {{form.name}}
-                                    <label for="#id_name blue-text">Your name</label>
-                                </div>
-                                <div class="md-form">
-                                    <i class="fa fa-envelope prefix blue-text"></i>
-                                    {{form.email}}
-                                    <label for="#id_email">Your email</label>
-                                </div>
-                                <div class="text-center">
-                                    <button  type="submit" class="btn btn-primary">Register</button>
-                                </div>
-                            </form>
+                    <!-- Form subscription -->
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="md-form">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            {{form.name}}
+                            <label for="{{form.name.id_for_label}}">Your name</label>
                         </div>
-                        <!-- /Card Content -->
+
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix grey-text"></i>
+                            {{form.email}}
+                            <label for="{{form.email.id_for_label}}">Your email</label>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-indigo" type="submit">Subscribe <i class="fa fa-paper-plane-o ml-1"></i></button>
+                        </div>
+
+                    </form>
+                    <!-- Form subscription -->
                     </div>
                     <!-- /Card -->
                 </div>
