@@ -16,6 +16,34 @@
     <!-- Your custom styles (optional) -->
     <link href="{% static '/MDB/css/style.css' %}" rel="stylesheet">
 
+    <style media="screen">
+    html,
+    body,
+    header,
+    #intro {
+    height: 100%;
+    }
+
+    /*  necessary for scrollspy */
+    body  {
+        position: relative;
+    }
+
+    /* Adding some padding to offset the top of the window from the navbar */
+    .nav-pad {
+        padding-top: 3.5em;
+    }
+    .nav-mar {
+        margin-top: 5em;
+    }
+    .tblack {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    </style>
+    {% block intro_style %}
+
+    {% endblock %}
+    
     {% block more_style %}
     <!-- individual style elements can be loaded here in inheriting templates -->
 

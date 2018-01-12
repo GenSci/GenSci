@@ -11,7 +11,7 @@ web:
     restart: always
     build: ./web/ # This building process will ensure we build a
                   # container with all the requirements we need.
-    command: gunicorn GenSci.wsgi -w 4 -b :9000
+    command: bash run_web.sh
     volumes:
         - ./web/:/code
         - /var/log/gunicorn
@@ -19,7 +19,8 @@ web:
         - "9000:9000"
     expose:
         - "9000"
-
+    env_file:
+        - .env
 
 
 # Defining our NGINX Web Server container
