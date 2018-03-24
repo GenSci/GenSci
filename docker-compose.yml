@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    # ----------------------------------------------------------
+    # Django Web Application
+    #-----------------------------------------------------------
+    webapp:
+        build: ./webapp
+        hostname: web
+        command: ./run_web.sh
+        volumes:
+            - ./webapp:/code
+        ports:
+            - "8000:8000" # port Gunicorn will use to proxy to nginx
+            - "8123:8123" # debugging port used for Django dev server
+        env_file: .env
+    # -----------------------------------------------------------
+    # PostgreSQL DB - Primary data store
+    # -----------------------------------------------------------
+    db:
+        image: postgres:10.3
+        hostname: db
+        ports:
+            - "5434:5432"
+        env_file: .env
