@@ -1,4 +1,7 @@
 
+# Files/Directories specfic to this project
+postgres
+
 # Python compiled code
 *.egg-info
 *.pyc

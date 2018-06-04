@@ -18,4 +18,9 @@ All components listed here will have their own Docker containers
 * Asynchronous Task Processing:  [Celery](http://www.celeryproject.org/)
 * Distributed Task Queue: [RabbitMQ](https://www.rabbitmq.com/)
 
-I may try to start using React as a front end (and use Django-Rest-Framework for the back end) but for now I will stick with the very useful Django templates and incorporate Google's Material Design principles.
+**Disclamer 2:** My knowledge of any of the above components are relatively thin.  I enjoy developing in the Django framework and have cobbled together a set of tools that allow me to do some nifty things with it.  I realize there is likely much more I could do to optimize any specific component and I would welcome any *helpful* suggestions.
+
+I may try to start using React as a front end (and use
+ Django-Rest-Framework for the back end) but for now I will stick
+ with the very useful Django templates and incorporate Google's
+ Material Design principles.

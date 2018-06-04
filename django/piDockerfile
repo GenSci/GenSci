@@ -1,0 +1,15 @@
+FROM resin/raspberrypi3-python:latest
+# Enabling systemd
+ENV INITSYSTEM on
+
+# Setting up our environment
+RUN MKDIR /code
+RUN mkdir -p /var/log/gunicorn
+RUN touch /var/log/gunicorn/gunicorn-access.log
+RUN chmod 755 /var/log/gunicorn/gunicorn-access.log
+RUN touch /var/log/gunicorn/gunicorn-error.log
+RUN chmod 755 /var/log/gunicorn/gunicorn-error.log
+RUN chmod 755 /var/log/gunicorn/
+WORKDIR /code
+ADD requirements.txt /code/
+RUN pip install -r requirements.txt
