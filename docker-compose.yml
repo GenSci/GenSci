@@ -17,12 +17,12 @@ services:
         volumes:
             - ./django/:/code
             - /var/log/gunicorn
-        links:
-            - postgres:postgres
-            # - redis:redis
         ports:
             - "9000:9000"
             - "8765:8765" # useful for using the django development server
+        depends_on:
+            - postgres
+
         expose:
             - "9000"
         env_file:
@@ -35,11 +35,11 @@ services:
         restart: always
         build: ./nginx/ # We build this so we can create the log files
                         # and esure we use the correct configuration.
+        depends_on:
+            - django
         volumes:
             - ./django:/www
             - /home/logs/
-        links:
-            - django:django
         ports:
             - "8000:80"
 

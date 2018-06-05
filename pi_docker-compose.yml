@@ -6,7 +6,7 @@
 # the Django development server.
 ######################################################################
 
-version: '3'
+version: '2.1'
 
 services:
     # First we will define the container for our Django application
@@ -19,6 +19,8 @@ services:
         volumes:
             - ./django/:/code
             - /var/log/gunicorn
+        depends_on:
+            - postgres
         ports:
             - "9000:9000"
         expose:
@@ -34,11 +36,10 @@ services:
         build:
             context: ./nginx
             dockerfile: piDockerfile
-        volumes:
-            - ./django/static:/www/static
-
-        links:
-            - django:django
+        depends_on:
+            - django
+        volumes_from:
+            - container:django
         ports:
             - "80:80"
 
