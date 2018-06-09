@@ -11,5 +11,4 @@ RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.old
 
 ADD sites-enabled/nginx.conf /etc/nginx/nginx.conf
 RUN mkdir /home/logs
-RUN touch /home/logs/error.log
-RUN touch /home/logs/access.log
+ADD ./logs /home/logs
