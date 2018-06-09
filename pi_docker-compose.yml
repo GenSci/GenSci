@@ -44,7 +44,7 @@ db:
     restart: always
     image: tobi312/rpi-postgresql:latest # Getting the most up-to-date and cool postgres server instance.
     volumes:
-        - ./postgres/:/docker-entrypoint-initdb.d/
+        - ./postgres/:/docker-entrypoint-initdb.d
         - pg-data:/var/lib/postgresql/data
     expose:
         - "5432"
