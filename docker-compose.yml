@@ -5,7 +5,7 @@
 # that it relies upon the NGINX server while the dev version uses
 # the Django development server.
 ######################################################################
-version: '3'
+version: '3.1'
 
 services:
     # First we will define the container for our Django application
@@ -64,7 +64,7 @@ services:
 #     image: redis:latest
 #     expose:
 #         - "6379"
-#
+
 # # Eventually I want to use rabbitmq for my distributed task queueing processes along with Celery.  So let's just make that available now.
 # rabbitmq:
 #     image: rabbitmq:latest

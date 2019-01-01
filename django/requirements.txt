@@ -2,13 +2,20 @@
 # Required Packages
 ###########################################################
 
+# Django Packages
 django >= 2.0
 djangorestframework
 django-filter
 django-cors-headers
+
+#Application web server
+gunicorn
+
+# Interaction with Postgres DB
 psycopg2-binary
+
+# Data science packages
 numpy
 scipy
 pandas
 sklearn
-gunicorn

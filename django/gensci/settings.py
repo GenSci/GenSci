@@ -81,10 +81,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('PGDATABASE'),
-        # I've heard that dumping everyting into the public schema slows down Posgres so I'm setting the search path for all operations to the gensci schema
-        'OPTIONS': {
-          'options': '-c search_path=gensci'
-        },
         'USER': os.environ.get('WEB_USER'),
         'PASSWORD': os.environ.get('WEB_PASSWORD'),
         'HOST': os.environ.get('PGHOST'),

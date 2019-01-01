@@ -4,12 +4,13 @@
 
 # Raspberry PI specific image for Nginx
 FROM tobi312/rpi-nginx:latest
-
+RUN echo 'starting nginx construction'
 CMD ["bash", "rm -f -- /etc/nginx/sites-enabled/default"]
 CMD ["bash", "mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.old"]
 CMD ["bash "mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.old"]
 
 ADD sites-enabled/nginx.conf /etc/nginx/nginx.conf
+RUN mkdir /home/logs
 CMD ["bash", "mkdir /home/logs"]
 CMD ["bash", "touch /home/logs/error.log"]
 CMD ["bash", "touch /home/logs/access.log"]
