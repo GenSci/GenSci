@@ -9,13 +9,14 @@ version: '3.1'
 
 services:
     # First we will define the container for our Django application
-    django:
+    app:
+        container_name: gs_app
         restart: always
-        build: ./django/ # This building process will ensure we build a
+        build: ./app/ # This building process will ensure we build a
                       # container with all the requirements we need.
         command: ./run_web.sh
         volumes:
-            - ./django/:/code
+            - ./app/:/code
             - /var/log/gunicorn
         ports:
             - "9000:9000"
@@ -32,19 +33,21 @@ services:
 
     # Defining our NGINX Web Server container
     nginx:
+        container_name: gs_webserver
         restart: always
         build: ./nginx/ # We build this so we can create the log files
                         # and esure we use the correct configuration.
         depends_on:
-            - django
+            - app
         volumes:
-            - ./django:/www
+            - ./app:/www
             - /home/logs/
         ports:
-            - "8000:80"
+            - "8000:8000"
 
     # # Defining our database server container.
     postgres:
+        container_name: gs_db
         restart: always
         image: postgres:latest # Getting the most up-to-date and cool postgres server instance.
         volumes:
