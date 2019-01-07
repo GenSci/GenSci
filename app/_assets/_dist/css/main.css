@@ -1,0 +1,14 @@
+/*
+-----------------------------------------------------------------------
+MAIN SCSS FILE
+This file handles the imports of all our specific style rules so that
+we can wrap everything up into a single CSS file after compiling.
+-----------------------------------------------------------------------
+*/
+/*
+Custome style rules for our typography.
+*/
+.error {
+  font-size: 125%;
+  color: #F11;
+}

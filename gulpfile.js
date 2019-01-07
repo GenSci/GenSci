@@ -1,20 +1,19 @@
-import gulp from 'gulp';
-
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var babel = require('gulp-babel');
-var minifycss = require('gulp-minify-css');
-var exec = require('child_process').exec;
+const gulp = require('gulp');
+// var gulp = require('gulp');
+const sass = require('gulp-sass');
+const concat = require('gulp-concat');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
+const minifycss = require('gulp-minify-css');
+const exec = require('child_process').exec;
 
 // Defining SASS and CSS variables
 var sassFiles = 'app/_assets/scss/*.scss',
       cssDest = 'app/_assets/_dist/css/';
 
 //Processing any SASS into CSS
-function sass() {
+function mySass(done) {
     return gulp
             .src(sassFiles)
             .pipe(sass({outputStyle: "expanded"}))
@@ -22,13 +21,14 @@ function sass() {
             .pipe(rename({suffix: '.min'}))
             .pipe(minifycss())
             .pipe(gulp.dest(cssDest));
+            done();
 }
 
 // JS script paths
 var jsFiles = 'app/_assets/js/*.js',
       jsDest = 'app/_assets/_dist/js/';
 
-function scripts() {
+function myScripts(done) {
     return gulp
             .src(jsFiles)
             .pipe(babel({presets: ['env']}))
@@ -37,17 +37,19 @@ function scripts() {
             .pipe(rename('scripts.min.js'))
             .pipe(uglify())
             .pipe(gulp.dest(jsDest));
+            done();
 }
 
 // Using the Django command to collect various static files into a central repository.
-function collectStatic() {
+function collectStatic(done) {
     exec('docker exec gs_app python3 manage.py collectstatic --noinput', function(stderr, stdout) {
         console.log(stdout);
         console.log(stderr);
+        done();
     });
 }
 
-const compileScripts = gulp.parallel(sass, scripts)
+const compileScripts = gulp.parallel(mySass, myScripts)
 compileScripts.descriptionb = 'Compiling SCSS and JS files'
 
 const compCollect = gulp.series(compileScripts, collectStatic)
@@ -61,15 +63,6 @@ const watchApps = () => {
 }
 const watch = gulp.parallel(watchJS, watchSCSS, watchApps);
 
-const defaultTasks = gulp.series(compCollect, watch);
+const defaultTask = gulp.series(compCollect, watch);
 
-export {
-    sass,
-    scripts,
-    collectStatic,
-    compileScripts,
-    compCollect,
-    watch
-}
-
-export default defaultTasks
+exports.default = defaultTask
