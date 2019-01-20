@@ -1,0 +1,64 @@
+<!--
+#################################################################
+home/nav.html
+#################################################################
+This file defines our navigation bar and footer section that will be
+carried through all our templates
+-->
+{% extends "home/base.html" %}
+
+{% block body %}
+  <header id="head">
+    {% block nav %}
+      <div class="dark-mask navbar-fixed">
+        <nav class="nav-wrapper">
+          <a href="#head" class="brand-logo">Gentlemen Scientists</a>
+          <a href="" data-target="gs-sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="{% url 'about:index' %}">About Us</a></li>
+             <li><a href="{% url 'blog:index' %}">Blog</a></li>
+             <li><a href=""></a></li>
+          </ul>
+        </nav>
+      </div>
+      <ul class="sidenav indigo-lighten-3 white-text" id="gs-sidenav">
+        <li><a href="{% url 'about:index' %}">About Us</a></li>
+         <li><a href="{% url 'blog:index' %}">Blog</a></li>
+         <li><a href=""></a></li>
+      </ul>
+    {% endblock %}
+    {% block more_header %}
+
+    {% endblock %}
+  </header>
+  <main>
+    {% block main %}
+
+    {% endblock %}
+  </main>
+  {% block footer %}
+  <footer class="page-footer indigo darken-2">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 m8 s12">
+          <h5 class="white-text">Connect with Gentlemen Scientists</h5>
+          <p class="white-text">Here at GenSci, we are always looking engage with scientific collaborators, software developers, and curious individuals.</p>
+        </div>
+        <div class="col l6 m4 s12">
+          <h5 class="white-text">Contact Us</h5>
+          <ul>
+            <li> <a href="https://github.com/GenSci" class="grey-text text-lighten-3"><i class="fab fa-github-square lt-150"></i> Code With Us</a> </li>
+            <li> <a href="mailto:ryan@gensci.org" class="grey-text text-lighten-3"><i class="fas fa-envelope lt-150"></i> Email Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center-align">
+        &copy; 2019 Gentlemen Scientists
+      </div>
+    </div>
+  </footer>
+  {% endblock %}
+
+{% endblock %}

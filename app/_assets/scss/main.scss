@@ -5,4 +5,11 @@ This file handles the imports of all our specific style rules so that
 we can wrap everything up into a single CSS file after compiling.
 -----------------------------------------------------------------------
 */
+// Defining style rules for our text elements
 @import "typography";
+
+// Defining useful and attractive gradients
+@import "gradients";
+
+// Importing style rules specific to our navbars
+@import "navbar";
