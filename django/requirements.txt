@@ -2,7 +2,7 @@
 # Required Packages
 ###########################################################
 
-django >= 2.0
+django >= 2.2
 djangorestframework
 django-filter
 django-cors-headers
