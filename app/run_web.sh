@@ -16,4 +16,4 @@ eval 'python3 manage.py migrate'
 
 # Now that our DB properly reflects our Django models, we can start our
 # web application.
-eval 'gunicorn gensci.wsgi -w 4 -b :9000'
+eval 'gunicorn gensci.wsgi --config=gunicorn.conf.py -w 4 -b :9000'

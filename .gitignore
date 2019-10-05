@@ -113,3 +113,6 @@ ENV/
 
 # node modules
 node_modules/
+
+# Pycharm Files
+.idea

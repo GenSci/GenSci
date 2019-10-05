@@ -1,25 +1,11 @@
-############################################################
-# Required Packages
-###########################################################
-
-# Django Packages
-django >= 2.0
+Django>=2.2,<2.3
+wagtail>=2.5,<2.6
 djangorestframework
 django-filter
 django-cors-headers
-django-jsonview
-
-#Application web server
-gunicorn
-
-# Interaction with Postgres DB
-psycopg2-binary
-
-# Data science packages
+psycopg2-binary<2.8
 numpy
 scipy
 pandas
 sklearn
-
-# Interactive python terminal
-ipython
+gunicorn

@@ -1,19 +1,27 @@
-####################################################################
-# Django container DockerFile
-# This file is used to build the container image, including creating the logs
-# for the Gunicorn web server as well as install the requirements defined for
-# this application.
-####################################################################
+# Use an official Python runtime as a parent image
+FROM python:3.7
+LABEL maintainer="hello@wagtail.io"
 
-FROM python:3.6
+# Set environment varibles
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /code
-RUN mkdir -p /var/log/gunicorn
-RUN touch /var/log/gunicorn/gunicorn-access.log
-RUN chmod 777 /var/log/gunicorn/gunicorn-access.log
-RUN touch /var/log/gunicorn/gunicorn-error.log
-RUN chmod 777 /var/log/gunicorn/gunicorn-error.log
-RUN chmod 777 /var/log/gunicorn/
-WORKDIR /code
-ADD requirements.txt /code/
-RUN pip install -r requirements.txt
+ENV DJANGO_ENV dev
+
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install --upgrade pip
+# Install any needed packages specified in requirements.txt
+RUN pip install -r /code/requirements.txt
+RUN pip install gunicorn
+
+# Copy the current directory contents into the container at /code/
+COPY . /code/
+# Set the working directory to /code/
+WORKDIR /code/
+
+# RUN python manage.py migrate
+
+# RUN useradd wagtail
+# RUN chown -R wagtail /code
+# USER wagtail
+
+# EXPOSE 8000
+# CMD exec gunicorn gensci.wsgi:application --bind 0.0.0.0:9000 -- workers 3
