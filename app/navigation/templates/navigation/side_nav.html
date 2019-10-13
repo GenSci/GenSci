@@ -1,0 +1,21 @@
+{% load wagtailimages_tags  cache %}
+
+
+{% image menu.menu_image fill-400x400 as img %}
+{#{% cache 604800 side_nav  %}#}
+<ul id="slide-out" class="sidenav">
+    <li>
+        <div class="user-view">
+            <div class="background">
+                <img src="{{ img.url }}" alt="">
+            </div>
+            <h4>Gentlemen Scientists</h4>
+            {% comment %}
+            <a href="#name"><span class="white-text name">{{ user.get_full_name }}</span></a>
+            <a href="#email"><span class="white-text email">{{ user.email }}</span></a>
+            {% endcomment %}
+        </div>
+    </li>
+    {% include "navigation/nav_links.html" with items=menu.menu_items.all%}
+</ul>
+{#{% endcache %}#}

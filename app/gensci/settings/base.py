@@ -22,10 +22,16 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
 # Application definition
+SITE_ID = 1
+
 
 INSTALLED_APPS = [
     'home',
     'search',
+    'navigation',
+    'blog',
+    'contact',
+    'projects',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -92,9 +98,9 @@ WSGI_APPLICATION = 'gensci.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('PGDATABASE'),
-        'USER': os.environ.get('WEB_USER'),
-        'PASSWORD': os.environ.get('WEB_PASSWORD'),
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.environ.get('PGHOST'),
         'PORT': 5432,
         'CONN_MAX_AGE': 600,
@@ -146,6 +152,7 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
+    os.path.join(BASE_DIR, '_assets/_dist')
 ]
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated

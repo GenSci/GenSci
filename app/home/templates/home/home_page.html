@@ -4,18 +4,21 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
+    <!-- Additional CSS loaded here -->
+{% endblock extra_css %}
 
 {% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
+    Here we want to offer just a basic hero image header with a little text  and provide user navigation
 {% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
-{% endblock extra_css %}
 
 {% block content %}
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
+
 
 {% endblock content %}
+
+{% block extra_js %}
+    <script type="text/javascript">
+        M.AutoInit();
+    </script>
+{% endblock %}

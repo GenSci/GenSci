@@ -18,7 +18,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/gensci.css' %}">
+        <link rel="stylesheet" href="{% static 'materialize/css/materialize.css' %}">
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -27,11 +29,15 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
+        <!-- Custom Navigation components -->
+        {% include "navigation/nav_bar.html" %}
 
         {% block content %}{% endblock %}
 
+        {%  include "components/footer.html" %}
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/gensci.js' %}"></script>
+        <script type="text/javascript" src="{%  static 'materialize/js/materialize.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}

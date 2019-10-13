@@ -1,0 +1,11 @@
+
+
+<div class="slider ">
+    <ul class="slides">
+    {% if self.carousel_images %}
+        {% for cimage in self.carousel_images.all %}
+            {% include "components/image_slide.html" with cimage=image %}
+        {% endfor %}
+    {% endif %}
+    </ul>
+</div>
