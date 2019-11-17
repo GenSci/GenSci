@@ -15,7 +15,6 @@ All components listed here will have their own Docker containers
 * DB:  [PostgreSQL](https://www.postgresql.org/)
 * Web application:  [Django Python web framework](https://www.djangoproject.com/) + [Gunicorn](http://gunicorn.org/)
 * Web Server: [NGINX](https://www.nginx.com/)
-* Cache + Session Storage:  [Redis](https://redis.io/)
 
 
 **Disclamer 2:** My knowledge of any of the above components are relatively thin.  I enjoy developing in the Django framework and have cobbled together a set of tools that allow me to do some nifty things with it.  I realize there is likely much more I could do to optimize any specific component and I would welcome any *helpful* suggestions.

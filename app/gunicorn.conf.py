@@ -1,4 +1,3 @@
-
 """
 Define Gunciron Configuration.
 ---------------------------------------
@@ -10,10 +9,10 @@ Define Gunciron Configuration.
 import multiprocessing
 
 bind = "127.0.0.1:9000"
-errorlog = '/var/log/gunicorn/gunicorn-error.log'
-accesslog = '/var/log/gunicorn/gunicorn-access.log'
+errorlog = "-"
+accesslog = "-"
 reload = True
-loglevel = 'debug'
+loglevel = "debug"
 workers = multiprocessing.cpu_count() * 2 + 1
-timeout = 60*10
-graceful_timeout = 60*5
+timeout = 60 * 10
+graceful_timeout = 60 * 5

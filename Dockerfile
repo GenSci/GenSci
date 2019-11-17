@@ -15,5 +15,5 @@ RUN touch /var/log/gunicorn/gunicorn-error.log
 RUN chmod 777 /var/log/gunicorn/gunicorn-error.log
 RUN chmod 777 /var/log/gunicorn/
 WORKDIR /code
-ADD requirements.txt /code/
+ADD app/requirements.txt /code/
 RUN pip install -r requirements.txt

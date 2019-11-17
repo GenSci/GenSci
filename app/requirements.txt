@@ -3,10 +3,11 @@ certifi==2019.9.11
 chardet==3.0.4
 Django==2.2.5
 django-cors-headers==3.1.0
+django-debug-toolbar==2.0
 django-extensions==2.2.3
 django-filter==2.2.0
-django-modelcluster==4.4
-django-taggit==0.24.0
+django-modelcluster==5.0
+django-taggit==1.1.0
 django-treebeard==4.3
 djangorestframework==3.10.3
 draftjs-exporter==2.1.6
@@ -28,6 +29,6 @@ sklearn==0.0
 sqlparse==0.3.0
 Unidecode==1.1.1
 urllib3==1.25.5
-wagtail==2.6.2
+wagtail==2.7
 webencodings==0.5.1
-Willow==1.1
+Willow==1.3

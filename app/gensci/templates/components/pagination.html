@@ -1,0 +1,29 @@
+<!--
+A generic pagination menu using MaterializeCSS pagination styling.
+CONTEXT
+ - pages - an object that has the Django paginator properties and methods
+-->
+
+<div class="row">
+    <div class="col s8 offset-s2 center">
+        <ul class="pagination">
+            <li class="waves-effect
+                {% if not pages.has_previous %}
+                    disabled
+                {% endif %}
+                ">
+                <a href="{% if pages.has_previous %}?page={{ pages.previous_page_number }} {% endif %}" >
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+            {% for page_num in pages.paginator.page_range %}
+                <li class="waves-effect {% if page_num = pages.number %} active {% endif %}">
+                    <a href="?page={{ page_num }}">{{ page_num }}</a>
+                </li>
+            {% endfor %}
+            <li class="waves-effect {% if not pages.has_next %}disabled{% endif %}">
+                <a href="{% if pages.has_next %}?page={{ pages.next_page_number }}{% endif %}"></a>
+            </li>
+        </ul>
+    </div>
+</div>

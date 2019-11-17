@@ -5,6 +5,9 @@ _navbar.scss
 Custom styling rules for navbars.
 */
 
-//.nav-wrapper {
-//  background-color: rgba(10, 10, 10, 0.5);
-//}
+.navbar-fixed.trans {
+  background-color: rgba(0,0,0,0);
+  nav {
+    background-color: rgba(0,0,0,0);
+  }
+}

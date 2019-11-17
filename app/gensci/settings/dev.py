@@ -4,12 +4,27 @@ from .base import *
 DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+vi&bj@o^e9#)v#mrh8e)repzs)@!2cmgnp5_v656em)uhf-nl'
+SECRET_KEY = "+vi&bj@o^e9#)v#mrh8e)repzs)@!2cmgnp5_v656em)uhf-nl"
 
 # SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ['*'] 
+ALLOWED_HOSTS = ["*"]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+INTERNAL_IPS = ["127.0.0.1", "172.18.0.3"]
+
+# INSTALLED_APPS += [
+#     'debug_toolbar'
+# ]
+# MIDDLEWARE = [
+#     'debug_toolbar.middleware.DebugToolbarMiddleware',
+# ] + MIDDLEWARE
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+SHOW_TOOLBAR_CALLBACK = "gensci.settings.dev.show_toolbar"
+
+
+def show_toolbar():
+    return True
 
 
 try:

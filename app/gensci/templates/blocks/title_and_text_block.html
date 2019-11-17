@@ -1,0 +1,6 @@
+{% load wagtailcore_tags %}
+
+<div class="center">
+    <h3 class="{{ self.title_css_class }}">{{ self.title }}</h3>
+    <p class="{{ self.text_css_class }}">{{ self.text|richtext }}</p>
+</div>

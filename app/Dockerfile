@@ -24,4 +24,6 @@ WORKDIR /code/
 # USER wagtail
 
 # EXPOSE 8000
-# CMD exec gunicorn gensci.wsgi:application --bind 0.0.0.0:9000 -- workers 3
+#CMD python3 manage.py makemigrations
+#CMD python3 manage.y migrate
+#CMD exec gunicorn gensci.wsgi:application --config=gunicorn.conf.py
