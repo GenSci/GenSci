@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     "wagtail.core",
     "modelcluster",
     "taggit",
+    # WAGTAIL API
+    'wagtail.api.v2',
+    'rest_framework',
     # DEBUGGING
     "debug_toolbar",
     # DJANGO CORE APPS
