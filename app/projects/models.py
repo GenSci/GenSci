@@ -284,7 +284,8 @@ class Project(Page):
         APIField('name'),
         APIField('description'),
         APIField('type'),
-        APIField('repository')
+        APIField('repository'),
+        APIField('status'),
     ]
     # ADMIN INTERFACE
     content_panels = Page.content_panels + [

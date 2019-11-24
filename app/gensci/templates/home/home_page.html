@@ -55,31 +55,10 @@
                     Recent blog posts go here
                 {% endcomment %}
                 <ul>
-                    <li>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium architecto beatae
-                            blanditiis hic incidunt ipsum iste iure iusto minus neque nihil, praesentium provident
-                            quaerat quas repudiandae sed vel voluptatum!</p>
-                    </li>
-                    <li>
-                        <p>Et iure labore molestias perferendis quam, soluta voluptate? Alias, asperiores aut blanditiis
-                            consectetur eaque excepturi explicabo fuga maiores molestiae natus necessitatibus non odit
-                            qui quo sequi soluta tenetur vel vero?</p>
-                    </li>
-                    <li>
-                        <p>A adipisci at corporis doloribus error expedita explicabo illo in, iure magni nemo neque,
-                            nobis placeat possimus quos? Asperiores autem, beatae cum debitis distinctio dolores error
-                            ex necessitatibus repellendus sequi?</p>
-                    </li>
-                    <li>
-                        <p>Ad asperiores cum dicta distinctio dolore dolorem dolores eveniet expedita facere illum
-                            iusto, labore laboriosam neque odit quaerat quis quo rem repellat repellendus rerum sapiente
-                            tempore ut vero! Quasi, tenetur.</p>
-                    </li>
-                    <li>
-                        <p>Atque dicta dolorem dolores error expedita facere illo incidunt iusto labore laborum, libero
-                            magnam magni maiores, necessitatibus officia possimus provident quae quaerat repellat sed
-                            sint suscipit tempore voluptas. Delectus, iure!</p>
-                    </li>
+                    {% for blog_page in latest_blogs %}
+                        {% include "blog/components/blog_page_link.html" %}
+                    {% endfor %}
+
                 </ul>
             </div>
         </div>

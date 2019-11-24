@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.core.paginator import (
     EmptyPage, PageNotAnInteger, Paginator
 )
+from django import forms
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 
@@ -22,7 +23,7 @@ from wagtail.api import APIField
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
-from modelcluster.fields import ParentalManyToManyField
+from modelcluster.fields import ParentalManyToManyField, ParentalKey
 
 from streams.blocks import CardBlock, RichtextBlock, TitleAndTextBlock
 
@@ -30,6 +31,13 @@ from logging import getLogger
 
 logger = getLogger(__name__)
 
+
+class BlogAuthorsOrderable(Orderable):
+    page = ParentalKey('blog.BlogDetailPage', related_name='blog_authors')
+    author = models.ForeignKey(
+        'projects.Scientist',
+        on_delete=models.CASCADE
+    )
 
 @register_snippet
 class BlogCategory(models.Model):
@@ -146,6 +154,7 @@ class BlogDetailPage(Page):
         ('richtext', RichtextBlock()),
         ('cards', CardBlock())
     ], null=True, blank=True)
+
     # DEFINE FIELDS TO SEARCH
     search_fields = Page.search_fields + [
         index.SearchField("post_title"),
@@ -159,7 +168,12 @@ class BlogDetailPage(Page):
         RichTextFieldPanel("post_summary"),
         ImageChooserPanel("post_image"),
         StreamFieldPanel("content"),
-        MultiFieldPanel([InlinePanel("categories")]),
+        MultiFieldPanel([
+            InlinePanel('blog_authors', label='Author', min_num=1)
+        ], heading='Blog Authors'),
+        MultiFieldPanel([
+            FieldPanel("categories", widget=forms.CheckboxSelectMultiple)
+        ], heading='Categories'),
     ]
     # API FIELDS
     api_fields = [
