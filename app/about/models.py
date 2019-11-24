@@ -21,7 +21,7 @@ class AboutPage(Page):
     """
     # SETTINGS
     max_count = 1
-    parent_page_types = ['home.HomePage']
+    # parent_page_types = ['home.HomePage']
     # FIELDS
     content = StreamField([
         ('title_and_text', TitleAndTextBlock()),

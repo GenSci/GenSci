@@ -210,3 +210,11 @@ header, main, footer {
     padding-left: 0;
   }
 }
+
+/*
+Define some custom badge style rules
+ */
+.gs-cat {
+  padding: 5px;
+  border-radius: 4px;
+}

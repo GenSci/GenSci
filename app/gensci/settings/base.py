@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "blog",
     "projects",
     'streams',
+    "about",
     #  DEPENDENCY APPLICATIONS
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",

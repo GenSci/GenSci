@@ -168,6 +168,10 @@ class Publication(Page):
         blank=False, null=True,
         help_text="Publication abstract"
     )
+    pub_journal = models.TextField(
+        null=True, blank=False,
+        verbose_name='Journal of Publication'
+    )
     pub_link = models.URLField(
         null=True, blank=True,
         help_text='Link to publication'
@@ -189,6 +193,7 @@ class Publication(Page):
     search_fields = Page.search_fields + [
         index.SearchField('pub_title'),
         index.SearchField('pub_abstract'),
+        index.SearchField('pub_journal'),
         index.SearchField('categories'),
         index.SearchField('authors')
     ]
@@ -196,6 +201,7 @@ class Publication(Page):
     content_panels = Page.content_panels + [
         FieldPanel('pub_title'),
         RichTextFieldPanel('pub_abstract'),
+        FieldPanel('pub_journal'),
         FieldPanel('pub_link'),
         MultiFieldPanel([
             FieldPanel('categories', widget=forms.CheckboxSelectMultiple)
@@ -271,6 +277,7 @@ class Project(Page):
         choices=PROJECT_STATUSES,
         help_text='The stage this project is currently at.'
     )
+    categories = ParentalManyToManyField('blog.BlogCategory')
 
     # API FIELDS
     api_fields = [
@@ -288,7 +295,8 @@ class Project(Page):
         MultiFieldPanel([
             InlinePanel('collaborators', label='Collaborator', min_num=1)
         ], heading='Project Collaborators'),
-        FieldPanel('status',)
+        FieldPanel('status'),
+        # MultiFieldPanel([InlinePanel("categories")]),
     ]
 
     class Meta:

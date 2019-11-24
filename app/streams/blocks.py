@@ -15,7 +15,7 @@ class TitleAndTextBlock(blocks.StructBlock):
     title_css_class = blocks.CharBlock(
         required=False, help_text="Enter the " "CSS classes to be applied"
     )
-    text = blocks.TextBlock(required=True, help_text="Body text")
+    text = blocks.RichTextBlock(required=True, help_text="Body text")
     text_css_class = blocks.CharBlock(required=False)
 
     class Meta:

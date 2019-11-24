@@ -13,6 +13,7 @@ from wagtail.admin.edit_handlers import (
 )
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from projects.models import Project, Publication
 
 class HomePageCarousel(Orderable):
     """Add between 1 and 5 images."""
@@ -82,8 +83,14 @@ class HomePage(RoutablePageMixin, Page):
         MultiFieldPanel(
             [ImageChooserPanel("background_image"), FieldPanel("background_mask")]
         ),
-        # MultiFieldPanel([
-        #     InlinePanel('carousel_images', min_num=1, max_num=5,
-        #                 label='Images'),
-        # ], heading='Carousel Images'),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        """Linking to projects"""
+
+        context = super().get_context(request, *args, **kwargs)
+        context['latest_projects'] = Project.objects.live().public().order_by(
+            '-first_published_at')[:5]
+        context['latest_publications'] = Publication.objects.live().public(
+        ).order_by('-first_published_at')[:5]
+        return context

@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.text import slugify
 from django.shortcuts import render
-
+from django.core.paginator import (
+    EmptyPage, PageNotAnInteger, Paginator
+)
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 
@@ -74,19 +76,38 @@ class BlogListingPage(RoutablePageMixin, Page):
         null=True,
         help_text="A title for the header of this page.",
     )
+    paginate_by = models.IntegerField(
+        default=5, verbose_name='Paginate By',
+        help_text='The number of blog posts to be displayed on a single page.'
+    )
 
     # CUSTOM METHODS
     def get_context(self, request, *args, **kwargs):
         """Adding blog pages to our context"""
         context = super().get_context(request, *args, **kwargs)
+        all_blogs = BlogDetailPage.objects.live().public(
+        ).order_by('-last_published_at')
+        # Adding pagination
+        paginator = Paginator(all_blogs, self.paginate_by)
+        page = request.GET.get('page')
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
 
-        context["categories"] = BlogCategory.objects.all()
+        context['posts'] = posts
+        context['categories'] = BlogCategory.objects.all()
         return context
 
     # API FIELDS
     api_fields = [APIField("page_title")]
     # ADMIN INTERFACE
-    content_panels = Page.content_panels + [FieldPanel("page_title")]
+    content_panels = Page.content_panels + [
+        FieldPanel("page_title"),
+        FieldPanel('paginate_by')
+    ]
 
     class Meta:
         verbose_name = "Blog Listing"
