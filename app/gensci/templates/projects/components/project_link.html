@@ -1,0 +1,19 @@
+<!--
+A simple <li> element with a link to a specific project page.  This is expected to be rendered
+with an <ul> element.
+CONTEXT
+ - project - An instance of the Project model
+-->
+<li class="ma-2">
+    <a class="white-text lt-125" href="{{ project.url }}">{{ project.name }}</a>
+    <br>
+    <span class="gs-cat
+        {% if project.type == 's' %}
+            indigo lighten-2 white-text
+        {% elif project.type == 'r' %}
+            teal lighten-2 white-text
+        {% endif %}
+        ">{{ project.get_type_display }}</span>
+    <span class="gs-cat gd-happyfisher">{{ project.get_status_display }}</span>
+</li>
+

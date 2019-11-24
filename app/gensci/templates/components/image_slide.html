@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+
+{% image image fill-1200x800 as img %}
+<li class="">
+    <img src="{{ img.url }}" alt="{{ img.alt }}"> <!-- random image -->
+    <div class="caption {{ cimage.text_orient }}-align">
+        <h3 class="white-text ">{{ cimage.title }}</h3>
+        <h5 class="light white-text ">{{ cimage.subtitle }}</h5>
+    </div>
+</li>

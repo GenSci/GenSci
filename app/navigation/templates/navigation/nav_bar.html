@@ -1,0 +1,22 @@
+{% load cache %}
+{% load menu_tags %}
+
+
+{% get_menu "main-menu" as menu %}
+
+{#{% cache 604800 navigation %}#}
+    <div class="navbar-fixed ">
+        <nav class="{{ menu.background_color_class }}">
+            <div class="nav-wrapper">
+                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large">
+                    <i class="material-icons">menu</i>
+                </a>
+                <a href="/" class="brand-logo">{{ self.banner_title|default:"Gentlemen Scientists" }}</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {% include "navigation/nav_links.html" with items=menu.menu_items.all%}
+                </ul>
+            </div>
+        </nav>
+    </div>
+{#{% endcache %}#}
+{%  include "navigation/side_nav.html" with menu=menu %}

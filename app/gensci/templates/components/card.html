@@ -1,0 +1,14 @@
+
+<div class="card">
+    {% block card_image %}
+        {# If a card image is desired, override this block #}
+    {% endblock %}
+        <div class="card-content">
+            {% block card_content %}
+                {# Add card content by overriding this block #}
+            {% endblock %}
+        </div>
+    {% block card_action %}
+        {# If card actions are desired, override this block #}
+    {% endblock %}
+</div>

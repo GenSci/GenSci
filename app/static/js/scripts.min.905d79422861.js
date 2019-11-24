@@ -1,0 +1,1 @@
+"use strict";var Test=function(){var t="This is my test";return{myTest:t,showTest:function(){return t}}}();

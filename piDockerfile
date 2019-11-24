@@ -1,0 +1,20 @@
+##########################################################
+# Raspberry Pi specific Dockerfile for Python and Django #
+##########################################################
+
+# Rapsbian based Python image
+FROM resin/raspberrypi3-python:latest
+# Enabling systemd
+ENV INITSYSTEM on
+
+# Setting up our environment
+CMD ["bash","mkdir /code"]
+CMD ["bash", "mkdir /var/log/gunicorn"]
+CMD ["bash", "touch /var/log/gunicorn/gunicorn-access.log"]
+CMD ["bash", "chmod 755 /var/log/gunicorn/gunicorn-access.log"]
+CMD ["bash", "touch /var/log/gunicorn/gunicorn-error.log"]
+CMD ["bash", "chmod 755 /var/log/gunicorn/gunicorn-error.log"]
+CMD ["bash", "chmod 755 /var/log/gunicorn/"]
+WORKDIR /code
+ADD requirements.txt /code/
+CMD ["bash", "pip install -r requirements.txt"]

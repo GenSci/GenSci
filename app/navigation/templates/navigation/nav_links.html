@@ -1,0 +1,18 @@
+<!--
+nav_links.html
+
+Provide a basic centralized navigation link that can be customized if needed.
+-->
+
+{% for item in items %}
+    <li>
+        <a href="{{ item.link }}" {% if item.open_in_new_tab %}
+            target="_blank"
+        {% endif %} >
+            {% if item.icon %}
+                {{ item.icon }}
+            {% endif %}
+            {{ item.link_title }}
+        </a>
+    </li>
+{% endfor %}

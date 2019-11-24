@@ -6,15 +6,18 @@
 # the Django development server.
 ######################################################################
 
+
 # First we will define the container for our Django application
-django:
+web:
     restart: always
-    build: ./django/piDockerfile # This building process will ensure we build a
-                  # container with all the requirements we need.
+    build: ./django
+    dockerfile: piDockerfile
     command: bash run_web.sh
     volumes:
         - ./django/:/code
         - /var/log/gunicorn
+    links:
+        - db
     ports:
         - "9000:9000"
     expose:
@@ -27,30 +30,28 @@ django:
 # Defining our NGINX Web Server container
 nginx:
     restart: always
-    build: ./nginx/piDockerfile # We build this so we can create the log files
-                    # and esure we use the correct configuration.
-    volumes:
-        - ./django/static:/www/static
-
+    build: ./nginx
+    dockerfile: piDockerfile
     links:
-        - django:django
+        - web
+    volumes_from:
+        - web
     ports:
         - "80:80"
 
 # Defining our database server container.
-postgres:
+db:
     restart: always
     image: tobi312/rpi-postgresql:latest # Getting the most up-to-date and cool postgres server instance.
     volumes:
-        # By loading the SQL scripts we have stored in our postgres directory into the docker-entrypoint-initdb.d directory, Docker will run then (in alphabetical order) when we first build the image.
-        - ./postgres/:/docker-entrypoint-initdb.d/
-        - /var/lib/postgresql
+        - ./postgres/:/docker-entrypoint-initdb.d
+        - pg-data:/var/lib/postgresql/data
     expose:
         - "5432"
     ports:
         - "5466:5432" # This allows us to examine our database server
                       # using tools like pgAdmin
-#
+    #
 # # Defining our Redis container, which we will use for caching and
 # # session storage.
 # redis:

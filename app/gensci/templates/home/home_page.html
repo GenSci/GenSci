@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock extra_css %}
+
+{% comment %}
+    REVISION:
+    * Background image for entire body with some sort of mask.
+    * Left 1/3 - list of projects
+    * Right 2/3 - recent blog posts
+    * Nav links - About, Blog, Projects
+    
+{% endcomment %}
+
+{% block content %}
+    {% image self.background_image fill-1920x1080 as img  %}
+    <div class="bg-image" style="background-image: url('{{ img.url }}')"></div>
+    <div class="headline-text">
+        <h3>{{ self.title }}</h3>
+        <div class="divider white"></div>
+        <p>{{ self.subtitle }}</p>
+    </div>
+    <div class="container w-90 home-content">
+{#        <div class="row">#}
+{#            <div class="col s12 center">#}
+{##}
+{#            </div>#}
+{#        </div>#}
+        <div class="row">
+            <div class="col s6 m4 l3 h-100">
+                <h5 class="white-text">Latest Projects</h5>
+                <ul>
+                   {% for project in latest_projects %}
+                        {% include "projects/components/project_link.html" %}
+                   {% endfor %}
+                </ul>
+                {% comment %}
+                    Proects list goes here
+                {% endcomment %}
+                <div class="divider white"></div>
+                <h5 class="white-text">Latest Publications</h5>
+                <ul>
+                    {% for publication in latest_publications %}
+                        {% include "projects/components/publication_link.html" %}
+                    {% endfor %}
+
+                </ul>
+            </div>
+            <div class="col s6 m8 l9 h-100">
+                {% comment %}
+                    Recent blog posts go here
+                {% endcomment %}
+                <ul>
+                    <li>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium architecto beatae
+                            blanditiis hic incidunt ipsum iste iure iusto minus neque nihil, praesentium provident
+                            quaerat quas repudiandae sed vel voluptatum!</p>
+                    </li>
+                    <li>
+                        <p>Et iure labore molestias perferendis quam, soluta voluptate? Alias, asperiores aut blanditiis
+                            consectetur eaque excepturi explicabo fuga maiores molestiae natus necessitatibus non odit
+                            qui quo sequi soluta tenetur vel vero?</p>
+                    </li>
+                    <li>
+                        <p>A adipisci at corporis doloribus error expedita explicabo illo in, iure magni nemo neque,
+                            nobis placeat possimus quos? Asperiores autem, beatae cum debitis distinctio dolores error
+                            ex necessitatibus repellendus sequi?</p>
+                    </li>
+                    <li>
+                        <p>Ad asperiores cum dicta distinctio dolore dolorem dolores eveniet expedita facere illum
+                            iusto, labore laboriosam neque odit quaerat quis quo rem repellat repellendus rerum sapiente
+                            tempore ut vero! Quasi, tenetur.</p>
+                    </li>
+                    <li>
+                        <p>Atque dicta dolorem dolores error expedita facere illo incidunt iusto labore laborum, libero
+                            magnam magni maiores, necessitatibus officia possimus provident quae quaerat repellat sed
+                            sint suscipit tempore voluptas. Delectus, iure!</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+{% block extra_js %}
+    <script type="text/javascript">
+        M.AutoInit();
+    </script>
+{% endblock %}

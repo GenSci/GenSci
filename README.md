@@ -1,4 +1,5 @@
 # GenSci
+
 #### The web project of a gentleman scientist.
 ---
 **Disclamer:** The term "gentleman scientist" is not used here in a gender deterministic way.  Rather it is used to evoke a romantic period in scientific discovery during which many advances were made by scientists working independently of any larger institution or financial backing.  Charles Darwin, Alexander Von Humboldt, and even Marie Curie were at one time "gentlemen scientists".  It is in these footsteps the current GenSci project seeks to walk.
@@ -14,13 +15,11 @@ All components listed here will have their own Docker containers
 * DB:  [PostgreSQL](https://www.postgresql.org/)
 * Web application:  [Django Python web framework](https://www.djangoproject.com/) + [Gunicorn](http://gunicorn.org/)
 * Web Server: [NGINX](https://www.nginx.com/)
-* Cache + Session Storage:  [Redis](https://redis.io/)
-* Asynchronous Task Processing:  [Celery](http://www.celeryproject.org/)
-* Distributed Task Queue: [RabbitMQ](https://www.rabbitmq.com/)
+
 
 **Disclamer 2:** My knowledge of any of the above components are relatively thin.  I enjoy developing in the Django framework and have cobbled together a set of tools that allow me to do some nifty things with it.  I realize there is likely much more I could do to optimize any specific component and I would welcome any *helpful* suggestions.
 
-I may try to start using React as a front end (and use
+I may try to start using Angulaer as a front end (and use
  Django-Rest-Framework for the back end) but for now I will stick
  with the very useful Django templates and incorporate Google's
  Material Design principles.

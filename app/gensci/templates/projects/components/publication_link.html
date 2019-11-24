@@ -1,0 +1,19 @@
+<!--
+A simple <li> element presenting a link to a Publication page.
+
+CONTEXT
+ - publication: An instance of a publication page model.
+-->
+
+<li>
+    <a class="white-text lt-125" href="{{ publication.url }}">{{ publication.pub_title|truncatewords:5 }}</a>
+    <br>
+    <p class="white-text">{{ publication.pub_journal }}</p>
+    <ul>
+        {% for category in publication.categories.all %}
+        <li>
+            <span class="gs-cat gd-aqua">{{ category.name }}</span>
+        </li>
+    {% endfor %}
+    </ul>
+</li>

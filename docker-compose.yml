@@ -5,66 +5,68 @@
 # that it relies upon the NGINX server while the dev version uses
 # the Django development server.
 ######################################################################
-version: '3'
+version: '3.1'
 
 services:
     # First we will define the container for our Django application
-    django:
+    app:
+        container_name: gs_app
         restart: always
-        build: ./django/ # This building process will ensure we build a
+        build: ./app/ # This building process will ensure we build a
                       # container with all the requirements we need.
         command: ./run_web.sh
         volumes:
-            - ./django/:/code
+            - ./app/:/code
             - /var/log/gunicorn
-        links:
-            - postgres:postgres
-            # - redis:redis
         ports:
             - "9000:9000"
             - "8765:8765" # useful for using the django development server
+        depends_on:
+            - postgres
+
         expose:
             - "9000"
         env_file:
             - .env
 
 
-
     # Defining our NGINX Web Server container
     nginx:
+        container_name: gs_webserver
         restart: always
         build: ./nginx/ # We build this so we can create the log files
                         # and esure we use the correct configuration.
+        depends_on:
+            - app
         volumes:
-            - ./django:/www
+            - ./app:/www
             - /home/logs/
-        links:
-            - django:django
         ports:
-            - "8000:80"
+            - "8000:8000"
 
     # # Defining our database server container.
     postgres:
+        container_name: gs_db
         restart: always
-        image: postgres:latest # Getting the most up-to-date and cool postgres server instance.
+        image: postgres:12
         volumes:
-            # By loading the SQL scripts we have stored in our postgres directory into the docker-entrypoint-initdb.d directory, Docker will run then (in alphabetical order) when we first build the image.
-            - ./postgres/:/docker-entrypoint-initdb.d/
             - pg-data:/var/lib/postgresql/data
+            - ./postgres:/docker-entrypoint-initdb.d/
         expose:
             - "5432"
         ports:
-            - "5466:5432" # This allows us to examine our database server
-                          # using tools like pgAdmin
-    #
-# # Defining our Redis container, which we will use for caching and
-# # session storage.
-# redis:
-#     restart: always
-#     image: redis:latest
-#     expose:
-#         - "6379"
-#
+            - "5466:5432" # This allows us to examine our database 
+        env_file:
+          - .env
+  # Defining our Redis container, which we will use for caching and
+  # session storage.
+#    redis:
+#      container_name: redis
+#      restart: always
+#      image: redis:latest
+#      expose:
+#          - "6379"
+
 # # Eventually I want to use rabbitmq for my distributed task queueing processes along with Celery.  So let's just make that available now.
 # rabbitmq:
 #     image: rabbitmq:latest
@@ -75,5 +77,4 @@ services:
 
 # Mapping an external data volume to be mounted on the Docker network.  This will allow us to destroy and rebuild our Postgres server without loosing data.
 volumes:
-
-    pg-data:
+    pg-data: {}
