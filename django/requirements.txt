@@ -1,0 +1,14 @@
+############################################################
+# Required Packages
+###########################################################
+
+django >= 2.2
+djangorestframework
+django-filter
+django-cors-headers
+psycopg2-binary
+numpy
+scipy
+pandas
+sklearn
+gunicorn
