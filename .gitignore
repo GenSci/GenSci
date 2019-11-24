@@ -2,6 +2,7 @@
 # Files/Directories specfic to this project
 postgres
 
+# IDE 
 # Python compiled code
 *.egg-info
 *.pyc
@@ -21,7 +22,7 @@ __pycache__/
 env/
 build/
 develop-eggs/
-dist/
+
 downloads/
 eggs/
 .eggs/
