@@ -79,28 +79,63 @@ class HomePage(RoutablePageMixin, Page):
         null=True,
         help_text="Select semi-transparent mask to apply over background image.",
     )
+    n_publications = models.IntegerField(
+        verbose_name='Number of Recent Publications',
+        default=5,
+        help_text='The number of recent publications to return to the homepage.'
+    )
+    n_projects = models.IntegerField(
+        verbose_name='Number of Recent Projects',
+        default=5,
+        help_text='The number of recent projects to return to the homepage.'
+    )
+    n_blog_posts = models.IntegerField(
+        verbose_name='Number of Recent Blog Posts',
+        default=5,
+        help_text='The number of recent blog posts to return to the homepage.'
+    )
     # Admin Content Panels
     content_panels = Page.content_panels + [
         MultiFieldPanel([FieldPanel("subtitle")]),
         MultiFieldPanel(
             [ImageChooserPanel("background_image"), FieldPanel("background_mask")]
         ),
+        MultiFieldPanel([
+            FieldPanel('n_publications'),
+            FieldPanel('n_projects'),
+            FieldPanel('n_blog_posts'),
+        ], heading='Home Page Records')
     ]
 
     api_fields = [
         APIField('subtitle'),
         APIField('background_image'),
-        # APIField('latest_projects'),
+        APIField('latest_projects'),
+        APIField('latest_publications'),
+        APIField('latest_blog_posts')
     ]
 
     def get_context(self, request, *args, **kwargs):
         """Linking to projects"""
 
         context = super().get_context(request, *args, **kwargs)
-        context['latest_projects'] = Project.objects.live().public().order_by(
-            '-first_published_at')[:5]
-        context['latest_publications'] = Publication.objects.live().public(
-        ).order_by('-first_published_at')[:5]
-        context['latest_blogs'] = BlogDetailPage.objects.live().public(
-        ).order_by('-first_published_at')[:5]
+        context['latest_projects'] = self.latest_projects
+        context['latest_publications'] = self.latest_projects
+        context['latest_blogs'] = self.latest_blog_posts
         return context
+    
+    @property
+    def latest_projects(self):
+        return Project.objects.live().public().order_by(
+            '-first_published_at')[:self.n_projects]
+
+    @property
+    def latest_publications(self):
+        return Publication.objects.live().public().order_by(
+            '-first_published_at')[:self.n_publications]
+
+    @property
+    def latest_blog_posts(self):
+        return BlogDetailPage.objects.live().public().order_by(
+            '-first_published_at')[:self.n_blog_posts]
+

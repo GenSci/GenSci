@@ -7,7 +7,7 @@ CONTEXT
 {% load wagtailcore_tags %}
 <li>
     <a class="white-text" href="{{ blog_page.url }}">{{ blog_page.post_title }}</a>
-    <br>
+    <p class="white-text">{{ blog_page.last_published_at }}</p>
     <p class="small-text">{{ blog_page.post_summary|richtext|truncatewords:10 }}</p>
     {% for category in blog_page.categories.all %}
         <span class="gs-cat gd-heavyrain">
