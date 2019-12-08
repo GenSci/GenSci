@@ -17,7 +17,7 @@ services:
             dockerfile: piDockerfile
         command: bash run_web.sh
         volumes:
-            - ./django/:/code
+            - ./app/:/code
         depends_on:
             - postgres
         ports:
