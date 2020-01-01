@@ -24,6 +24,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 SITE_ID = 1
 
+# Enable Cross Origin Request Sharing
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 INSTALLED_APPS = [
     # CUSTOM APPS
@@ -34,6 +37,7 @@ INSTALLED_APPS = [
     "projects",
     'streams',
     "about",
+    'corsheaders',
     #  DEPENDENCY APPLICATIONS
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -63,6 +67,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",

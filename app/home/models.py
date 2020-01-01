@@ -3,6 +3,7 @@ from django.db import models
 from wagtail.core.models import Page, Orderable
 from modelcluster.fields import ParentalKey
 from wagtail.api import APIField
+from wagtail.api.v2.serializers import PageSerializer
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.admin.edit_handlers import (
     FieldPanel,
@@ -110,9 +111,9 @@ class HomePage(RoutablePageMixin, Page):
     api_fields = [
         APIField('subtitle'),
         APIField('background_image'),
-        APIField('latest_projects'),
-        APIField('latest_publications'),
-        APIField('latest_blog_posts')
+        APIField('latest_projects', serializer=PageSerializer),
+        APIField('latest_publications', serializer=PageSerializer),
+        APIField('latest_blog_posts', serializer=PageSerializer)
     ]
 
     def get_context(self, request, *args, **kwargs):
@@ -120,7 +121,7 @@ class HomePage(RoutablePageMixin, Page):
 
         context = super().get_context(request, *args, **kwargs)
         context['latest_projects'] = self.latest_projects
-        context['latest_publications'] = self.latest_projects
+        context['latest_publications'] = self.latest_publications
         context['latest_blogs'] = self.latest_blog_posts
         return context
     

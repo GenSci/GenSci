@@ -124,7 +124,8 @@ class BlogListingPage(RoutablePageMixin, Page):
     @route(r"^latest/")
     def latest_posts(self, request, *args, **kwargs):
         context = self.get_context(request, *args, *kwargs)
-        context["latest_posts"] = context["posts"][:4]
+        hp = HomePage.objects.first()
+        context["latest_posts"] = context["posts"][:5]
         context["n"] = len(context["latest_posts"])
         return render(request, template_name="blog/latest_posts.html", context=context)
 

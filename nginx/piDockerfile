@@ -1,13 +1,13 @@
 ###################################################
-# Rapsberry Pi Specific Docker File               #
+# Raspberry Pi Specific Docker File               #
 ###################################################
 
 # Raspberry PI specific image for Nginx
 FROM tobi312/rpi-nginx:latest
 RUN echo 'starting nginx construction'
-RUN rm -f -- /etc/nginx/sites-enabled/default
-RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.old
-RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.old
+# RUN rm -f -- /etc/nginx/sites-enabled/default
+# RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.old
+# RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.old
 
 ADD sites-enabled/nginx.conf /etc/nginx/nginx.conf
 
