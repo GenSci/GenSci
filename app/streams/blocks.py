@@ -8,6 +8,17 @@ from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
 
+class TextDiv(blocks.StructBlock):
+    """Simple text chunks rendered in a <div> element with CSS classes applied."""
+    text = blocks.RichTextBlock(required=True)
+    classes = blocks.CharBlock(required=False)
+
+    class Meta:
+        template = 'blocks/text_div.html'
+        icon = 'document',
+        label = 'Text Div'
+        
+
 class TitleAndTextBlock(blocks.StructBlock):
     """Just a title and some text."""
 

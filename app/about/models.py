@@ -8,7 +8,9 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.api import APIField
 from wagtail.search import index
 
-from streams.blocks import CardBlock, RichtextBlock, TitleAndTextBlock
+from streams.blocks import (
+    CardBlock, RichtextBlock, TitleAndTextBlock, TextDiv
+)
 
 from logging import getLogger
 
@@ -24,6 +26,7 @@ class AboutPage(Page):
     # parent_page_types = ['home.HomePage']
     # FIELDS
     content = StreamField([
+        ('text_div', TextDiv()),
         ('title_and_text', TitleAndTextBlock()),
         ('richtext', RichtextBlock()),
         ('cards', CardBlock())

@@ -6,7 +6,7 @@
 ###################################################################
 
 # We wait 30 seconds to allow the database server to file up
-sleep 10
+sleep 2
 # Creating migrations to catch any database changes we've made in our Django
 #  applciation.
 eval 'python3 manage.py makemigrations'
