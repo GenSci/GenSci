@@ -111,9 +111,9 @@ class HomePage(RoutablePageMixin, Page):
     api_fields = [
         APIField('subtitle'),
         APIField('background_image'),
-        APIField('latest_projects', serializer=PageSerializer),
-        APIField('latest_publications', serializer=PageSerializer),
-        APIField('latest_blog_posts', serializer=PageSerializer)
+        # APIField('latest_projects', serializer=PageSerializer),
+        # APIField('latest_publications', serializer=PageSerializer),
+        # APIField('latest_blog_posts', serializer=PageSerializer)
     ]
 
     def get_context(self, request, *args, **kwargs):
