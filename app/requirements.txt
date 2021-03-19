@@ -9,7 +9,7 @@ django-filter==2.2.0
 django-modelcluster==5.0
 django-taggit==1.1.0
 django-treebeard==4.3
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 draftjs-exporter==2.1.6
 gunicorn==19.9.0
 html5lib==1.0.1
